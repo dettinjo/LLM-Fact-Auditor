@@ -1,0 +1,9 @@
+Requests==2.32.3
+spacy==3.8.2
+SPARQLWrapper==2.0.0
+torch==2.5.1
+transformers==4.46.2
+llama_cpp_python==0.3.2
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
+nltk==3.9.1
+stanza==1.9.2
