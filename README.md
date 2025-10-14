@@ -179,13 +179,15 @@ python3 main.py --llama_ver=3 < ./test_data/input.txt > ./test_data/output.txt
 question-001	Is Managua the capital of Nicaragua?
 ```
 
-**Corresponding Output in `output.txt`:**```
+**Corresponding Output in `output.txt`:**
+```
 question-001	R"Yes, Managua is the capital and largest city of Nicaragua."
 question-001	A"yes"
 question-001	C"correct"
 question-001	E"Managua"	"https://en.wikipedia.org/wiki/Managua"
 question-001	E"Nicaragua"	"https://en.wikipedia.org/wiki/Nicaragua"
 ```
+
 The output format includes the raw **R**esponse, extracted **A**nswer, **C**orrectness check, and linked **E**ntities.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
