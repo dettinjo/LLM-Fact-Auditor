@@ -1,11 +1,3 @@
-You've run into a common issue with Markdown rendering. Sometimes, the reference-style links used for badges don't display correctly depending on the viewer or a subtle syntax issue.
-
-Using a more direct HTML-based approach for the badges is more robust and ensures they will be displayed correctly everywhere. I've updated the `README.md` to use this method for both the top shields and the "Built With" section.
-
-Here is the corrected version:
-
-***
-
 <!-- Improved compatibility of back to top link -->
 <a id="readme-top"></a>
 
