@@ -1,12 +1,32 @@
+You've run into a common issue with Markdown rendering. Sometimes, the reference-style links used for badges don't display correctly depending on the viewer or a subtle syntax issue.
+
+Using a more direct HTML-based approach for the badges is more robust and ensures they will be displayed correctly everywhere. I've updated the `README.md` to use this method for both the top shields and the "Built With" section.
+
+Here is the corrected version:
+
+***
+
 <!-- Improved compatibility of back to top link -->
 <a id="readme-top"></a>
 
 <!-- PROJECT SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+<div align="center">
+  <a href="https://github.com/dettinjo/LLM-Fact-Auditor/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/dettinjo/LLM-Fact-Auditor/network/members">
+    <img alt="Forks" src="https://img.shields.io/github/forks/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/dettinjo/LLM-Fact-Auditor/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/dettinjo/LLM-Fact-Auditor/issues">
+    <img alt="Issues" src="https://img.shields.io/github/issues/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/dettinjo/LLM-Fact-Auditor/blob/main/LICENSE">
+    <img alt="MIT License" src="https://img.shields.io/github/license/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge">
+  </a>
+</div>
 
 <!-- PROJECT LOGO -->
 <br />
@@ -68,12 +88,26 @@ This system was developed as a university project to create a practical tool for
 
 This project leverages a powerful stack of modern NLP tools and libraries.
 
-* [![Python][Python-shield]][Python-url]
-* [![Docker][Docker-shield]][Docker-url]
-* [![Llama][Llama-shield]][Llama-url]
-* [![PyTorch][PyTorch-shield]][PyTorch-url]
-* [![Transformers][Transformers-shield]][Transformers-url]
-* [![spaCy][spaCy-shield]][spaCy-url]
+<p>
+  <a href="https://www.python.org/">
+    <img alt="Python" src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  </a>
+  <a href="https://www.docker.com/">
+    <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
+  </a>
+  <a href="https://llama.meta.com/">
+    <img alt="Llama" src="https://img.shields.io/badge/LLama-2396F3?style=for-the-badge&logo=meta&logoColor=white">
+  </a>
+  <a href="https://pytorch.org/">
+    <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white">
+  </a>
+  <a href="https://huggingface.co/docs/transformers/index">
+    <img alt="Transformers" src="https://img.shields.io/badge/Transformers-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black">
+  </a>
+  <a href="https://spacy.io/">
+    <img alt="spaCy" src="https://img.shields.io/badge/spaCy-09A3D5?style=for-the-badge&logo=spacy&logoColor=white">
+  </a>
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -207,27 +241,3 @@ Project Link: [https://github.com/dettinjo/LLM-Fact-Auditor](https://github.com/
 *   [Othneil Drew's Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge
-[contributors-url]: https://github.com/dettinjo/LLM-Fact-Auditor/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge
-[forks-url]: https://github.com/dettinjo/LLM-Fact-Auditor/network/members
-[stars-shield]: https://img.shields.io/github/stars/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge
-[stars-url]: https://github.com/dettinjo/LLM-Fact-Auditor/stargazers
-[issues-shield]: https://img.shields.io/github/issues/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge
-[issues-url]: https://github.com/dettinjo/LLM-Fact-Auditor/issues
-[license-shield]: https://img.shields.io/github/license/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge
-[license-url]: https://github.com/dettinjo/LLM-Fact-Auditor/blob/main/LICENSE
-[Python-shield]: https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white
-[Python-url]: https://www.python.org/
-[Docker-shield]: https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white
-[Docker-url]: https://www.docker.com/
-[Llama-shield]: https://img.shields.io/badge/LLama-2396F3?style=for-the-badge&logo=meta&logoColor=white
-[Llama-url]: https://llama.meta.com/
-[PyTorch-shield]: https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white
-[PyTorch-url]: https://pytorch.org/
-[Transformers-shield]: https://img.shields.io/badge/Transformers-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black
-[Transformers-url]: https://huggingface.co/docs/transformers/index
-[spaCy-shield]: https://img.shields.io/badge/spaCy-09A3D5?style=for-the-badge&logo=spacy&logoColor=white
-[spaCy-url]: https://spacy.io/
