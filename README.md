@@ -1,121 +1,233 @@
-# XM_40020_WedDataProcessingSystems
-![Licence](https://img.shields.io/badge/Licence-MIT-green?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/Angelo-De-Nadai/XM_40020_WedDataProcessingSystems?style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/Angelo-De-Nadai/XM_40020_WedDataProcessingSystems?style=for-the-badge)
+<!-- Improved compatibility of back to top link -->
+<a id="readme-top"></a>
+
+<!-- PROJECT SHIELDS -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <h3 align="center">LLM Fact Auditor</h3>
+
+  <p align="center">
+    A post-processing pipeline to fact-check, entity-link, and verify answers from Large Language Models.
+    <br />
+    <br />
+    <a href="#about-the-project">About the Project</a>
+    &middot;
+    <a href="#getting-started">Getting Started</a>
+    &middot;
+    <a href="#usage">Usage</a>
+  </p>
+</div>
 
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#group-members">Group Members</a>
-    <li>
-      <a href="#about-the-project">About the Project</a>
+      <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
-        <li><a href="#structure">Structure</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
     </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
-<!-- GROUP MEMBERS -->
-## Group Members
-- Joel Dettinger - 2837238 - j.dettinger@student.vu.nl
-- Ruida Zhou - 2838822 - r.zhou4@student.vu.nl
-- Hongqian Xia - 2844892 - h.xia@student.vu.nl
-- Angelo De Nadai - 2866832 - a.denadai@student.vu.nl
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-<!-- PROJECT OVERVIEW -->
-## About the Project
+Large Language Models (LLMs) are powerful, but they can produce factually incorrect or unverifiable information—a phenomenon often called "hallucination." This project, **LLM Fact Auditor**, serves as a robust post-processing pipeline designed to address this challenge. It takes a question and a raw LLM-generated answer, then enriches and verifies it through a multi-stage process.
+
+Here's what it does:
+*   **Entity Linking**: It identifies named entities (like people, places, and organizations) in the text and links them to their corresponding Wikipedia pages, grounding the response in factual data.
+*   **Answer Extraction**: It distills the often verbose LLM response into a concise, direct answer, such as a "yes/no" or a specific entity.
+*   **Fact-Checking**: It verifies the extracted answer's correctness by cross-referencing it with structured knowledge from Wikidata and the content of the linked Wikipedia pages.
+
+This system was developed as a university project to create a practical tool for improving the reliability of AI-generated content.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Built With
 
-- [![PythonBadge]](https://www.python.org/doc/)
-- [![DockerBadge]](https://docs.docker.com/)
-- [![BashBadge]](https://www.gnu.org/software/bash/manual/bash.html)
-- [![MetaBadge]](https://www.llama.com/)
+This project leverages a powerful stack of modern NLP tools and libraries.
 
-## Demo
-### Example Question
+* [![Python][Python-shield]][Python-url]
+* [![Docker][Docker-shield]][Docker-url]
+* [![Llama][Llama-shield]][Llama-url]
+* [![PyTorch][PyTorch-shield]][PyTorch-url]
+* [![Transformers][Transformers-shield]][Transformers-url]
+* [![spaCy][spaCy-shield]][spaCy-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+Follow these steps to set up and run the project locally within the provided Docker environment.
+
+### Prerequisites
+
+*   **Docker**: You must have Docker installed and running.
+*   **WDPS Docker Image**: The project is designed to run inside the `karmaresearch/wdps2` Docker container. Ensure you have this container running.
+    ```sh
+    docker ps
+    ```
+
+### Installation
+
+1.  **Clone the Repository**:
+    ```sh
+    git clone https://github.com/dettinjo/LLM-Fact-Auditor.git
+    cd LLM-Fact-Auditor
+    ```
+2.  **Copy Project Files to Docker**: From your host machine's terminal, copy the entire project directory into your running Docker container.
+    ```sh
+    docker cp ./ <container_id>:/home/user/submission
+    ```
+3.  **Access the Container and Set Up Environment**:
+    ```sh
+    # Enter the container's shell
+    docker exec -it <container_id> bash
+
+    # Navigate to the project directory
+    cd /home/user/submission
+
+    # Switch to root user to install dependencies
+    sudo su
+
+    # Create and activate a virtual environment
+    python3 -m venv virtual_env
+    source virtual_env/bin/activate
+    ```
+4.  **Install Dependencies**: Install all required Python packages and download the necessary NLP models. This step may take some time.
+    ```sh
+    # Install Python packages
+    pip install -r requirements.txt
+
+    # Run the setup script to download all models
+    python src/setup.py
+    ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+The main script is designed to read questions from standard input and write the processed output to standard output.
+
+### Running with Llama 2 (Default)
+This command reads questions from `test_data/input.txt` and saves the structured output to `test_data/output.txt`.
+
+```sh
+python3 main.py < ./test_data/input.txt > ./test_data/output.txt
+```
+
+### Running with Llama 3
+For higher quality answers and faster performance, you can use the Llama 3 model by adding the `--llama_ver=3` flag.
+
+```sh
+python3 main.py --llama_ver=3 < ./test_data/input.txt > ./test_data/output.txt
+```
+
+### Example Input & Output
+
+**Input Question in `input.txt`:**
 ```
 question-001	Is Managua the capital of Nicaragua?
 ```
-Output from llama 2
-```
+
+**Corresponding Output in `output.txt`:**```
 question-001	R"Yes, Managua is the capital and largest city of Nicaragua."
 question-001	A"yes"
 question-001	C"correct"
 question-001	E"Managua"	"https://en.wikipedia.org/wiki/Managua"
 question-001	E"Nicaragua"	"https://en.wikipedia.org/wiki/Nicaragua"
 ```
+The output format includes the raw **R**esponse, extracted **A**nswer, **C**orrectness check, and linked **E**ntities.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- PROJECT SETUP -->
+<!-- ROADMAP -->
+## Roadmap
 
-## Getting Started
+- [ ] Implement a more robust relation extraction module.
+- [ ] Add support for additional knowledge bases beyond Wikidata.
+- [ ] Develop a simple web interface for interactive demonstrations.
+- [ ] Expand fact-checking capabilities to handle more complex and nuanced claims.
 
-### Initialization
+See the [open issues](https://github.com/dettinjo/LLM-Fact-Auditor/issues) for a full list of proposed features (and known issues).
 
-Copy files to Docker container
-```
-# at submission folder, host machine
-# get your container ID
-user@host_machine XM_40020_WedDataProcessingSystems % docker ps
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# copy files from the host into the Docker container
-user@host_machine XM_40020_WedDataProcessingSystems % docker cp ./ <container_id>:/home/user/submission
-```
+<!-- LICENSE -->
+## License
 
+Distributed under the MIT License. See `LICENSE` for more information.
 
-Check if files exit in docker
-```
-# back to docker
-user@ace396552e14:~$ cd submission/
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-user@ace396552e14:~/submission$ pwd
-/home/user/submission
+<!-- CONTACT -->
+## Contact
 
-# we should have directory structure like this
-user@ace396552e14:~/submission$ ls
-Dockerfile  README.md  main.py     requirements.txt  test_data
-LICENSE     debug.py   output.txt  src
-```
-Set up a virtual environment
-```
-# switch to root user
-user@ace396552e14:~/submission$ sudo su
+This project was created for the Web Data Processing Systems course (XM_40020) at Vrije Universiteit Amsterdam.
 
-# set up venv
-root@ace396552e14:/home/user/submission# python3 -m venv virtual_env
+**Group Members:**
+*   Joel Dettinger - j.dettinger@student.vu.nl
+*   Ruida Zhou - r.zhou4@student.vu.nl
+*   Hongqian Xia - h.xia@student.vu.nl
+*   Angelo De Nadai - a.denadai@student.vu.nl
 
-root@ace396552e14:~/submission$ source virtual_env/bin/activate
+Project Link: [https://github.com/dettinjo/LLM-Fact-Auditor](https://github.com/dettinjo/LLM-Fact-Auditor)
 
-(virtual_env) root@ace396552e14:~/submission$ pip install -r requirements.txt
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-(virtual_env) root@ace396552e14:/home/user/submission# python src/setup.py
-```
-### Execution
-### With Llama2
-You can execute task 1 with the following command. The default input is `./test_data/input.txt`, which contains the question list. The result will be output to `./test_data/output.txt`, which contains RACEs. If you execute it multiple times, the result files will be overwritten.
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
 
-Change input and output file path for other question sets if needed.
+*   Vrije Universiteit Amsterdam
+*   Hugging Face for the incredible `transformers` library and model hosting.
+*   The developers of spaCy, Stanza, and the Wikidata platform.
+*   [Othneil Drew's Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
-For the sample questions in `./test_data/input.txt`, it takes about 3 mins with llama2
-```
-(virtual_env) root@ace396552e14:/home/user/submission# python3 main.py < ./test_data/input.txt > ./test_data/output.txt
-```
-#### With Llama3
-
-The given model llama 2 produces answers of poor quality. Add `llama_ver` param to switch to llama 3 for better answers and faster speed (less than 3 min for sample questions in `./test_data/input.txt`).
-```
-(virtual_env) root@ace396552e14:/home/user/submission# python3 main.py --llama_ver=3 < ./test_data/input.txt > ./test_data/output.txt
-```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[PythonBadge]:https://img.shields.io/badge/python-yellow?style=for-the-badge&logo=python&logoColor=white
-[DockerBadge]:https://img.shields.io/badge/Docker-%231D63ED?style=for-the-badge&logo=docker&logoColor=white
-[BashBadge]:https://img.shields.io/badge/GNU%20Bash-black?style=for-the-badge&logo=gnubash&logoColor=white
-[MetaBadge]:https://img.shields.io/badge/LLama-%230081FB?style=for-the-badge&logo=meta&logoColor=white
+[contributors-shield]: https://img.shields.io/github/contributors/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge
+[contributors-url]: https://github.com/dettinjo/LLM-Fact-Auditor/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge
+[forks-url]: https://github.com/dettinjo/LLM-Fact-Auditor/network/members
+[stars-shield]: https://img.shields.io/github/stars/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge
+[stars-url]: https://github.com/dettinjo/LLM-Fact-Auditor/stargazers
+[issues-shield]: https://img.shields.io/github/issues/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge
+[issues-url]: https://github.com/dettinjo/LLM-Fact-Auditor/issues
+[license-shield]: https://img.shields.io/github/license/dettinjo/LLM-Fact-Auditor.svg?style=for-the-badge
+[license-url]: https://github.com/dettinjo/LLM-Fact-Auditor/blob/main/LICENSE
+[Python-shield]: https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white
+[Python-url]: https://www.python.org/
+[Docker-shield]: https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
+[Llama-shield]: https://img.shields.io/badge/LLama-2396F3?style=for-the-badge&logo=meta&logoColor=white
+[Llama-url]: https://llama.meta.com/
+[PyTorch-shield]: https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white
+[PyTorch-url]: https://pytorch.org/
+[Transformers-shield]: https://img.shields.io/badge/Transformers-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black
+[Transformers-url]: https://huggingface.co/docs/transformers/index
+[spaCy-shield]: https://img.shields.io/badge/spaCy-09A3D5?style=for-the-badge&logo=spacy&logoColor=white
+[spaCy-url]: https://spacy.io/
