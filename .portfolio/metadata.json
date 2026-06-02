@@ -6,5 +6,20 @@
   "publishLink": true,
   "liveUrl": null,
   "repoUrl": "https://github.com/dettinjo/LLM-Fact-Auditor",
-  "tags": ["Python", "PyTorch", "spaCy", "Stanza", "NLP", "LLM", "Entity Linking", "Fact-Checking", "Wikidata", "Data Processing", "Docker"]
+  "tags": [
+    "Python",
+    "PyTorch",
+    "spaCy",
+    "Stanza",
+    "NLP",
+    "LLM",
+    "Entity Linking",
+    "Fact-Checking",
+    "Wikidata",
+    "Data Processing",
+    "Docker"
+  ],
+  "titleDe": "LLM Faktenprüfer",
+  "descriptionDe": "Eine Pipeline zur automatischen Faktenprüfung, Entitätsverknüpfung und Verifikation von LLM-Antworten gegen strukturierte Wissensbasen.",
+  "projectTypeDe": "KI & NLP Pipeline"
 }
