@@ -7,7 +7,7 @@
 Eine fortgeschrittene Post-Processing-Pipeline, die im Rahmen des Kurses "Web Data Processing Systems" an der Vrije Universiteit Amsterdam entwickelt wurde. Das System prüft automatisch die Fakten, verlinkt Entitäten und verifiziert Antworten von Large Language Models (LLMs) anhand strukturierter Wissensbasen.
 
 <p align="center">
-  <img src="docs/docker.svg" alt="Docker" width="170" />
+  <img src="docs/pytorch.svg" alt="Pytorch" width="170" />
 </p>
 
 ### Die Herausforderung
