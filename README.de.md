@@ -1,8 +1,14 @@
+<!-- portfolio:date=2024-10-14 -->
+
 [Deutsch](README.de.md) · [English](README.md)
 
 # LLM Fact Auditor
 
 Eine fortgeschrittene Post-Processing-Pipeline, die im Rahmen des Kurses "Web Data Processing Systems" an der Vrije Universiteit Amsterdam entwickelt wurde. Das System prüft automatisch die Fakten, verlinkt Entitäten und verifiziert Antworten von Large Language Models (LLMs) anhand strukturierter Wissensbasen.
+
+<p align="center">
+  <img src="docs/docker.svg" alt="Docker" width="170" />
+</p>
 
 ### Die Herausforderung
 
