@@ -4,7 +4,7 @@
 
 # LLM Fact Auditor
 
-Eine fortgeschrittene Post-Processing-Pipeline, die im Rahmen des Kurses "Web Data Processing Systems" an der Vrije Universiteit Amsterdam entwickelt wurde. Das System prüft automatisch die Fakten, verlinkt Entitäten und verifiziert Antworten von Large Language Models (LLMs) anhand strukturierter Wissensbasen.
+Eine Post-Processing-Pipeline zum Faktencheck, Entity-Linking und Verifizieren von LLM-Antworten, entwickelt für den Kurs Web Data Processing Systems an der Vrije Universiteit Amsterdam.
 
 <p align="center">
   <img src="docs/pytorch.svg" alt="Pytorch" width="170" />
